@@ -1,0 +1,38 @@
+package juego;
+
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+//Canvas es para la ventana
+public class Juego extends Canvas{
+
+	private static final long serialVersionUID = 1L;
+
+	private static final int ANCHO = 800;
+	private static final int ALTO = 600;
+
+	private static final String NOMBRE = "Juego";
+	private JFrame ventana; // ventana por defecto de java y pones static porque solo hay una en toda la clase
+
+	private Juego() {
+		setPreferredSize(new Dimension(ANCHO, ALTO));
+
+		ventana = new JFrame(NOMBRE); // inicializamos la ventana
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // para que la ventana se cierre completamente y no se
+																// quede en segundo plano
+		ventana.setResizable(false); // para que el usuario no pueda cambiar el tamaño de la ventana
+		ventana.setLayout(new BorderLayout()); // para añadir un diseño de la ventana
+		ventana.add(this, BorderLayout.CENTER); // para que nuestro canvas salga en medio de la ventana
+		ventana.pack();// para que se ajuste bien
+		ventana.setLocationRelativeTo(null); // para que la ventana se abra en medio del escritorio
+		ventana.setVisible(true);// para que sea visible
+
+	}
+
+	public static void main(String[] args) { //Esto lo ejecutará el primer hilo
+		Juego juego = new Juego();
+	}
+}
+
